@@ -1,0 +1,66 @@
+<div class="wrapper">
+  <mat-card class="h-100">
+    <mat-card-title>
+      Upload New File
+    </mat-card-title>
+    <!--  <mat-card-subtitle class="text-center">Continue with your phone number</mat-card-subtitle>-->
+    <mat-divider></mat-divider>
+    <mat-card-content class="py-4">
+      <div class="px-3 pb-2">
+        <mat-form-field>
+          <div>
+            <mat-toolbar>
+              <!-- Display files names -->
+              <input class="h5" matInput [(ngModel)]="fileAttr" readonly name="name" />
+              <!-- Browse Button -->
+              <button mat-flat-button color="primary">Browse File</button>
+            </mat-toolbar>
+            <!-- Fetch selected filed on change -->
+            <input
+              type="file"
+              #fileInput
+              id="uploadFile"
+              (change)="uploadFileEvt($event)"
+              name="uploadFile"
+              accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            />
+          </div>
+        </mat-form-field>
+        <mat-error class="custom-error" *ngIf="!isFileValid">
+          Please select a XLSX/PPTX/DOCX of size less than 5 MB.
+        </mat-error>
+      </div>
+      <div class="px-3 pb-0">
+        <mat-form-field class="example-chip-list" appearance="fill">
+          <mat-label>Share file with users (upto 10)</mat-label>
+          <mat-chip-list #chipList aria-label="User Selection">
+            <mat-chip *ngFor="let usr of userList" (removed)="removeUser(usr)">
+              {{usr.uid}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input placeholder="Enter 10 digit phone number or email of user to share the file."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="addUser($event)">
+          </mat-chip-list>
+        </mat-form-field>
+        <mat-error class="custom-error" *ngIf="chipInputError">Please enter either a valid email or 10 digit mobile number. {{invalidChipText}} is invalid</mat-error>
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end" class="pe-3 pb-4">
+      <button mat-flat-button color="primary" [disabled]="!isFileValid || !isFileSelected || chipInputError" (click)="onUpload()">Upload</button>
+    </mat-card-actions>
+
+  </mat-card>
+  <div class="d-flex flex-column justify-content-center progress-overlay" *ngIf="apiFlags.uploadingFile">
+    <div class="align-self-center text-center">
+      <mat-spinner></mat-spinner>
+      <p class="mt-2">Uploading...</p>
+    </div>
+
+  </div>
+</div>

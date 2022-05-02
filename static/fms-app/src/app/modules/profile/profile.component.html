@@ -1,0 +1,44 @@
+<div class="px-2">
+  <div class="row">
+    <div class="col-12 col-lg-6 col-xl-4 mx-auto">
+      <form [formGroup]="profileDataForm">
+        <div class="row">
+          <div class="col-6 pe-2">
+            <mat-form-field class="w-100">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" required>
+              <mat-error *ngIf="firstNameControl!.invalid">
+                Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6 ps-2">
+            <mat-form-field class="w-100">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required>
+              <mat-error *ngIf="lastNameControl!.invalid">
+                Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mt-3">
+            <mat-form-field class="w-100">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required>
+              <mat-error *ngIf="emailControl!.invalid">
+                Please enter a valid email
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="my-4 px-3 col-10 col-lg-4 col-xl-2 mx-auto">
+          <button class="w-100 rounded-pill" mat-flat-button color="primary" (click)="submitProfileData($event)"
+                  [disabled]="apiCallFlag.savingProfile">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

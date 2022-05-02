@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.progress-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background: rgba(0,0,0,0.8);
+  border-radius: 3px;
+}
+
+.reload-button {
+  height: 30px;
+  width: 30px;
+  line-height: 15px !important;
+  mat-icon {
+    font-size: 20px;
+    margin-top: -5px;
+  }
+}
+
+.mat-card-content {
+  max-height: 300px;
+  overflow-y: scroll;
+}

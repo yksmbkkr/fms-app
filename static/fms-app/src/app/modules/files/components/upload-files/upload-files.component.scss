@@ -1,0 +1,50 @@
+.mat-form-field {
+  margin: 0 ;
+  width: 100% !important;
+}
+.mat-toolbar-single-row {
+  height: auto !important;
+  background: transparent;
+}
+.mat-toolbar-single-row button {
+  width: 200px;
+}
+.mat-form-field {
+  width: 100%;
+}
+#uploadFile {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 9;
+  opacity: 0;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+}
+
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.progress-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background: rgba(0,0,0,0.8);
+  border-radius: 3px;
+}
+
+.custom-error {
+  font-size: 11px;
+  margin-top: -10px;
+}
+
+.mat-card-content {
+  max-height: 300px;
+  overflow-y: scroll;
+}

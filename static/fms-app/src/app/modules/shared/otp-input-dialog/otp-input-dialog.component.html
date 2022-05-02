@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Enter OTP</h2>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <mat-label>OTP</mat-label>
+      <input #otpInput matInput maxlength="{{dialogData.otpLength}}" minlength="{{dialogData.otpLength}}" [formControl]="otpField" name="otpField" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+      <mat-error *ngIf="(otpField?.invalid && (otpField?.dirty || otpField?.touched))">
+        Enter 6 digit OTP
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <p>{{dialogData.description}} <button style="font-size: 11px;" type="button" class="btn btn-link text-white-50" (click)="closeDialog(false)">Change</button></p>
+  <p>
+    <button style="font-size: 11px;" type="button" class="btn btn-link text-white-50" (click)="resendOtp()" [disabled]="secondsRemaining > 0">Resend OTP</button>
+    <span *ngIf="secondsRemaining > 0"> in {{secondsRemaining}} sec.</span>
+  </p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="accent" [disabled]="otpField?.invalid" (click)="closeDialog(true)">Submit</button>
+</div>

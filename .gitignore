@@ -1,0 +1,12 @@
+.idea/
+venv/
+static/fms-app/.angular/
+static/fms-app/.idea/
+static/fms-app/dist/
+static/fms-app/node_modules/
+static/fms-app/package-lock.json
+**/__pycache__/
+**/*.pyc
+*.pyc
+
+fms/my_keys.py

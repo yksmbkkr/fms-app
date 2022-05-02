@@ -1,0 +1,1 @@
+OTP to verify email: {{ user.email }} is: {{ otp }}
